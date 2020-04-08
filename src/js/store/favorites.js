@@ -7,6 +7,16 @@ class Favorites {
     this._arrFavorites = [];
   }
 
+  checkTickets(id) {
+    let flag = true;
+    this._arrFavorites.map((ticket) => {
+      if (ticket.data_ticket_id === id) {
+        flag = false;
+      }
+    });
+    return flag;
+  }
+
   clickFavoriteTicket(tickets, id) {
     tickets.forEach((ticket) => {
       if (ticket.data_ticket_id === id) {

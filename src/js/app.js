@@ -26,11 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.classList.contains("material-icons")) {
       const data_id = e.target.getAttribute("data-ticket-id");
 
-      // favoriteUI.showAlert(
-      //   "Вы уже добавили этот билет!",
-      //   "https://img.icons8.com/offices/30/000000/cancel.png",
-      //   "color-red"
-      // );
       onClickBtnFavorite(data_id);
     } else if (e.target.classList.contains("delete-btn")) {
       const parent = e.target.closest("[data-ticket-id]");
@@ -72,7 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onClickBtnFavorite(id) {
-    favorites.clickFavoriteTicket(locations.lastSearch, id);
+    const result = favorites.checkTickets(id);
+    if (result) {
+      favorites.clickFavoriteTicket(locations.lastSearch, id);
+    } else {
+      favoriteUI.showAlert(
+        "Вы уже добавили этот билет!",
+        "https://img.icons8.com/offices/30/000000/cancel.png",
+        "color-red"
+      );
+      return;
+    }
   }
 
   function favoriteOnClick() {
