@@ -9,7 +9,6 @@ import favoriteUI from "./views/favoriteui";
 
 document.addEventListener("DOMContentLoaded", () => {
   initApp();
-
   const form = formUI.form;
   const container = document.querySelector(".tickets-sections .row");
   const btn = favoriteUI.btn;
@@ -49,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function onFormSubmit() {
     // собрать  данные из инпутов
+    ticketsUI.showLoader();
     const origin = locations.getCityCodeByKey(formUI.originValue);
     const destination = locations.getCityCodeByKey(formUI.destinationValue);
     const depart_date = formUI.departDateValue;
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return_date,
       currency,
     });
+
     ticketsUI.renderTickets(locations.lastSearch);
   }
 

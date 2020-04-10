@@ -33,6 +33,12 @@ class TicketsUI {
     this.container.insertAdjacentHTML("afterbegin", template);
   }
 
+  showLoader() {
+    let fragment = ` <div class="progress">
+    <div class="indeterminate" style="width: 100px"></div>
+</div>`;
+    this.container.insertAdjacentHTML("afterbegin", fragment);
+  }
   static emtyMsgTemplate() {
     return `
     <div class="tickets-empty-res-msg">
